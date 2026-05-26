@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europa 2026 — La Gran Aventura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --rust: #C0492C;
+    --gold: #D4A843;
+    --sage: #5C7A5F;
+    --slate: #4A5568;
+    --light: #FAF7F2;
+    --border: #E0D8CC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 120%, rgba(192,73,44,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(212,168,67,0.12) 0%, transparent 60%);
+  }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 110px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 0.92;
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.55);
+    letter-spacing: 1px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .hero-people {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+    position: relative;
+  }
+
+  .person-tag {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(245,240,232,0.8);
+    padding: 7px 16px;
+    border-radius: 40px;
+    font-size: 13px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-dates {
+    margin-top: 48px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: rgba(245,240,232,0.4);
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .hero-dates .line { width: 60px; height: 1px; background: rgba(245,240,232,0.2); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(245,240,232,0.3);
+    font-size: 11px;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(245,240,232,0.2);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── ROUTE OVERVIEW ── */
+  .route-strip {
+    background: var(--rust);
+    padding: 20px 0;
+    overflow: hidden;
+  }
+
+  .route-ticker {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+
+  .route-ticker span {
+    color: rgba(245,240,232,0.9);
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 0 20px;
+    font-weight: 500;
+  }
+
+  .route-ticker .dot {
+    color: rgba(245,240,232,0.4);
+    font-size: 6px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .city-card {
+    background: var(--light);
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .city-card:hover { background: var(--cream); }
+
+  .city-card.active { background: var(--ink); color: var(--cream); }
+
+  .city-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--rust);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .city-card.active .city-num { color: var(--gold); }
+
+  .city-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .city-meta {
+    font-size: 12px;
+    color: var(--slate);
+    display: flex;
+    gap: 12px;
+  }
+
+  .city-card.active .city-meta { color: rgba(245,240,232,0.5); }
+
+  .city-flag { font-size: 16px; }
+
+  /* ── CITY DETAIL ── */
+  .city-detail {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0;
+    display: none;
+    grid-column: 1 / -1;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .city-detail.open { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; } }
+
+  .city-detail-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  @media (max-width: 700px) {
+    .city-detail-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  .detail-section-title {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .must-see-list { list-style: none; }
+
+  .must-see-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .must-see-list li::before {
+    content: '→';
+    color: var(--rust);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .tour-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .tour-card a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .tour-card a:hover { text-decoration: underline; }
+
+  .tour-meta {
+    font-size: 12px;
+    color: rgba(245,240,232,0.45);
+    margin-top: 4px;
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  .free-badge {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  .tip-box {
+    background: rgba(212,168,67,0.1);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    font-size: 13px;
+    color: rgba(245,240,232,0.75);
+    border-radius: 0 4px 4px 0;
+    margin-top: 16px;
+  }
+
+  /* ── CAMPING TABLE ── */
+  .camping-table-wrap {
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:hover td { background: rgba(0,0,0,0.02); }
+
+  td a {
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  td a:hover { text-decoration: underline; }
+
+  .camp-price {
+    font-weight: 500;
+    color: var(--sage);
+    white-space: nowrap;
+  }
+
+  /* ── QUICK STATS ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+
+  .stat-box {
+    background: var(--light);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--rust);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-top: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── APPS ── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .app-card {
+    border: 1px solid var(--border);
+    padding: 20px;
+    background: var(--light);
+  }
+
+  .app-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .app-desc { font-size: 12px; color: var(--slate); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.35);
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* ── RESPONSIVE NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,20,16,0.96);
+    backdrop-filter: blur(12px);
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sticky-nav::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    color: rgba(245,240,232,0.45);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 18px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .nav-link:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Buenos Aires → Europa → Buenos Aires</div>
+  <h1>La Gran<br><em>Aventura</em><br>2026</h1>
+  <p class="hero-sub">16 ciudades · 30 días · 6 aventureros · 1 motorhome</p>
+
+  <div class="hero-people">
+    <span class="person-tag">👨 Papá</span>
+    <span class="person-tag">👩 Mamá</span>
+    <span class="person-tag">💑 Mi Novia</span>
+    <span class="person-tag">👦 Mi Hermano</span>
+    <span class="person-tag">💑 Su Novia</span>
+    <span class="person-tag">🧍 Yo</span>
+  </div>
+
+  <div class="hero-dates">
+    <div class="line"></div>
+    <span>5 JUNIO — 5 JULIO 2026</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ROUTE TICKER -->
+<div class="route-strip">
+  <div class="route-ticker" id="ticker">
+    <span>Berlín</span><span class="dot">●</span>
+    <span>Nuremberg</span><span class="dot">●</span>
+    <span>Munich</span><span class="dot">●</span>
+    <span>Salzburgo</span><span class="dot">●</span>
+    <span>Liubliana</span><span class="dot">●</span>
+    <span>Trieste</span><span class="dot">●</span>
+    <span>Split</span><span class="dot">●</span>
+    <span>Dubrovnik</span><span class="dot">●</span>
+    <span>Kotor</span><span class="dot">●</span>
+    <span>Mostar</span><span class="dot">●</span>
+    <span>Sarajevo</span><span class="dot">●</span>
+    <span>Budapest</span><span class="dot">●</span>
+    <span>Bratislava</span><span class="dot">●</span>
+    <span>Viena</span><span class="dot">●</span>
+    <span>Praga</span><span class="dot">●</span>
+    <span>Berlín</span><span class="dot">●</span>
+    <!-- duplicate for seamless loop -->
+    <span>Berlín</span><span class="dot">●</span>
+    <span>Nuremberg</span><span class="dot">●</span>
+    <span>Munich</span><span class="dot">●</span>
+    <span>Salzburgo</span><span class="dot">●</span>
+    <span>Liubliana</span><span class="dot">●</span>
+    <span>Trieste</span><span class="dot">●</span>
+    <span>Split</span><span class="dot">●</span>
+    <span>Dubrovnik</span><span class="dot">●</span>
+    <span>Kotor</span><span class="dot">●</span>
+    <span>Mostar</span><span class="dot">●</span>
+    <span>Sarajevo</span><span class="dot">●</span>
+    <span>Budapest</span><span class="dot">●</span>
+    <span>Bratislava</span><span class="dot">●</span>
+    <span>Viena</span><span class="dot">●</span>
+    <span>Praga</span><span class="dot">●</span>
+    <span>Berlín</span><span class="dot">●</span>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#resumen" class="nav-link">Resumen</a>
+  <a href="#ciudades" class="nav-link">Ciudades</a>
+  <a href="#campings" class="nav-link">Campings</a>
+  <a href="#apps" class="nav-link">Apps útiles</a>
+</nav>
+
+<!-- STATS -->
+<section class="section" id="resumen">
+  <div class="section-label">De un vistazo</div>
+  <h2 class="section-title">El viaje en<br>números</h2>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num">30</div>
+      <div class="stat-label">Días de aventura</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">16</div>
+      <div class="stat-label">Ciudades</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Países</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Aventureros</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Motorhome</div>
+    </div>
+  </div>
+
+  <!-- ITINERARY CALENDAR -->
+  <div class="section-label">Itinerario día a día</div>
+  <div class="camping-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Día</th>
+          <th>Ciudad</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>5/6</td><td>Jue</td><td>✈ Buenos Aires → Amsterdam</td><td>Salida 15:30hs ARG</td></tr>
+        <tr><td>6/6</td><td>Sáb</td><td>✈ Amsterdam → <strong>Berlín</strong></td><td>Llegan 9:10hs AMS · escala · vuelo a las 10hs</td></tr>
+        <tr><td>7/6</td><td>Dom</td><td>🇩🇪 Berlín</td><td>Palantir</td></tr>
+        <tr><td>8/6</td><td>Lun</td><td>🇩🇪 Berlín</td><td></td></tr>
+        <tr><td>9/6</td><td>Mar</td><td>🇩🇪 Berlín → <strong>Nuremberg</strong></td><td>Retiro del Motorhome</td></tr>
+        <tr><td>10/6</td><td>Mié</td><td>🇩🇪 Nuremberg</td><td></td></tr>
+        <tr><td>11/6</td><td>Jue</td><td>🇩🇪 Nuremberg → <strong>Munich</strong></td><td></td></tr>
+        <tr><td>12/6</td><td>Vie</td><td>🇩🇪 Munich</td><td></td></tr>
+        <tr><td>13/6</td><td>Sáb</td><td>🇩🇪→🇦🇹 Munich → <strong>Salzburgo</strong></td><td></td></tr>
+        <tr><td>14/6</td><td>Dom</td><td>🇦🇹 Salzburgo</td><td></td></tr>
+        <tr><td>15/6</td><td>Lun</td><td>🇦🇹→🇸🇮 Salzburgo → <strong>Liubliana</strong></td><td></td></tr>
+        <tr><td>16/6</td><td>Mar</td><td>🇸🇮→🇮🇹 Liubliana → <strong>Trieste</strong></td><td></td></tr>
+        <tr><td>17/6</td><td>Mié</td><td>🇮🇹→🇭🇷 Trieste → <strong>Split</strong></td><td></td></tr>
+        <tr><td>18/6</td><td>Jue</td><td>🇭🇷 Split</td><td></td></tr>
+        <tr><td>19/6</td><td>Vie</td><td>🇭🇷 Split</td><td></td></tr>
+        <tr><td>20/6</td><td>Sáb</td><td>🇭🇷 Split</td><td></td></tr>
+        <tr><td>21/6</td><td>Dom</td><td>🇭🇷 Split → <strong>Dubrovnik</strong></td><td></td></tr>
+        <tr><td>22/6</td><td>Lun</td><td>🇭🇷 Dubrovnik</td><td></td></tr>
+        <tr><td>23/6</td><td>Mar</td><td>🇭🇷→🇲🇪 Dubrovnik → <strong>Kotor</strong></td><td>Vuelta Montenegro → BS AS (Munich)</td></tr>
+        <tr><td>24/6</td><td>Mié</td><td>🇲🇪 Kotor</td><td></td></tr>
+        <tr><td>25/6</td><td>Jue</td><td>🇲🇪→🇧🇦 Kotor → <strong>Mostar</strong></td><td></td></tr>
+        <tr><td>26/6</td><td>Vie</td><td>🇧🇦 Mostar → <strong>Sarajevo</strong></td><td></td></tr>
+        <tr><td>27/6</td><td>Sáb</td><td>🇧🇦→🇭🇺 Sarajevo → <strong>Budapest</strong></td><td></td></tr>
+        <tr><td>28/6</td><td>Dom</td><td>🇭🇺 Budapest</td><td></td></tr>
+        <tr><td>29/6</td><td>Lun</td><td>🇭🇺→🇸🇰 Budapest → <strong>Bratislava</strong></td><td></td></tr>
+        <tr><td>30/6</td><td>Mar</td><td>🇸🇰→🇦🇹 Bratislava → <strong>Viena</strong></td><td></td></tr>
+        <tr><td>1/7</td><td>Mié</td><td>🇦🇹 Viena</td><td></td></tr>
+        <tr><td>2/7</td><td>Jue</td><td>🇦🇹→🇨🇿 Viena → <strong>Praga</strong></td><td></td></tr>
+        <tr><td>3/7</td><td>Vie</td><td>🇨🇿 Praga</td><td></td></tr>
+        <tr><td>4/7</td><td>Sáb</td><td>🇨🇿→🇩🇪 Praga → <strong>Berlín</strong></td><td></td></tr>
+        <tr><td>5/7</td><td>Dom</td><td>🇩🇪 Berlín ✈</td><td>Vuelta a casa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CITIES -->
+<section class="section" id="ciudades">
+  <div class="section-label">Guía por destino</div>
+  <h2 class="section-title">Qué ver &amp;<br>qué hacer</h2>
+  <p style="color:var(--slate); margin-bottom:40px; font-size:14px;">Hacé click en cada ciudad para ver los imperdibles, tours y excursiones recomendadas.</p>
+
+  <div class="timeline" id="cityGrid">
+
+    <!-- BERLIN -->
+    <div class="city-card" onclick="toggleCity('berlin')">
+      <div class="city-num">01 · 4 DÍAS</div>
+      <div class="city-name">Berlín</div>
+      <div class="city-meta"><span class="city-flag">🇩🇪</span><span>6–9 junio</span></div>
+    </div>
+    <div class="city-detail" id="berlin">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Puerta de Brandenburgo</li>
+            <li>Monumento al Holocausto</li>
+            <li>Unter den Linden</li>
+            <li>Reichstag (reservar entrada)</li>
+            <li>East Side Gallery — tramo del Muro</li>
+            <li>Checkpoint Charlie</li>
+            <li>Topografía del Terror</li>
+            <li>Gendarmenmarkt</li>
+            <li>Alexanderplatz</li>
+            <li>Tiergarten</li>
+            <li>Bebelplatz</li>
+            <li>Catedral de Berlín</li>
+            <li>Barrio Judío</li>
+            <li>Potsdamer Platz</li>
+            <li>Kurfürstendamm — shopping</li>
+            <li>🎉 Sisyphos Club (todos)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/berlin/free-tour-berlin/" target="_blank">Free Tour Berlín — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">3h 30min · Salidas de 9hs a 17hs (cada 1 hora) · Desde Pariser Platz<br>
+            Incluye: Puerta de Brandenburgo, Monumento a los Judíos, Führerbunker, Muro, Checkpoint Charlie, Gendarmenmarkt</div>
+          </div>
+          <div class="tip-box">💡 <strong>Recomendado para Berlín:</strong> El free tour es el mejor arranque. Con 4 días tienen tiempo de sobra para recorrer bien la ciudad a pie + algún día de relax/club.</div>
+
+          <div class="detail-section-title" style="margin-top:24px">Extra recomendado</div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Visita al Reichstag</span>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">Reservar online con anticipación en bundestag.de · Vistas increíbles de la ciudad desde la cúpula de vidrio.</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Isla de los Museos (Museumsinsel)</span>
+            <span class="price-badge">~18 € c/u</span>
+            <div class="tour-meta">5 museos UNESCO en una isla del Spree · El Museo de Pérgamo vale cada euro.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NUREMBERG -->
+    <div class="city-card" onclick="toggleCity('nuremberg')">
+      <div class="city-num">02 · 2 DÍAS</div>
+      <div class="city-name">Nuremberg</div>
+      <div class="city-meta"><span class="city-flag">🇩🇪</span><span>9–11 junio</span></div>
+    </div>
+    <div class="city-detail" id="nuremberg">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Castillo de Núremberg</li>
+            <li>Hauptmarkt — plaza principal</li>
+            <li>Frauenkirche</li>
+            <li>Fuente Schöner Brunnen</li>
+            <li>Casa de Alberto Durero</li>
+            <li>Barrio de San Lorenzo</li>
+            <li>Iglesia medieval de San Lorenzo</li>
+            <li>Hospital del Espíritu Santo</li>
+            <li>Barrio de San Sebaldo</li>
+            <li>Sinagoga Hans-Sachs-Platz</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/es/nuremberg/free-tour-nuremberg/" target="_blank">Free Tour Núremberg — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2h 30min · Salidas 10:45 y 11:45 · Desde Frauenkirche<br>
+            Incluye: Hauptmarkt, iglesia de Nuestra Señora, Schöner Brunnen, barrio San Lorenzo, castillo</div>
+          </div>
+          <div class="tip-box">💡 Núremberg tiene un centro medieval muy bien conservado. Perfecto para caminar tranquilos. Aprovechen la tarde del primer día para el free tour y el segundo para el castillo y los museos.</div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Rally Grounds / Centro de Documentación NSDAP</span>
+            <span class="price-badge">~8 € c/u</span>
+            <div class="tour-meta">El lugar donde se realizaban los mítines nazis. Impactante y muy bien documentado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUNICH -->
+    <div class="city-card" onclick="toggleCity('munich')">
+      <div class="city-num">03 · 2 DÍAS</div>
+      <div class="city-name">Munich</div>
+      <div class="city-meta"><span class="city-flag">🇩🇪</span><span>11–13 junio</span></div>
+    </div>
+    <div class="city-detail" id="munich">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Marienplatz y el Glockenspiel</li>
+            <li>Englischer Garten — el parque más grande de Europa</li>
+            <li>Residenz München (palacio real)</li>
+            <li>Hofbräuhaus — cervecería histórica</li>
+            <li>Museo Alemán (Deutsches Museum)</li>
+            <li>Nymphenburg Palace</li>
+            <li>Viktualienmarkt — mercado al aire libre</li>
+            <li>BMW Welt (entrada gratis)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/munich/free-tour-munich/" target="_blank">Free Tour Munich — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">3hs · Marienplatz como punto de partida · Horarios mañana y tarde</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Excursión a Neuschwanstein</span>
+            <span class="price-badge">~30 € c/u</span>
+            <div class="tour-meta">El castillo de Disney. A ~2hs de Munich. Vale totalmente la pena, reservar con anticipación. Combinado con el lago Alpsee.</div>
+          </div>
+          <div class="tip-box">💡 Si solo tienen 2 días, el free tour + Hofbräuhaus el primer día, y Neuschwanstein el segundo es una combinación imbatible.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALZBURGO -->
+    <div class="city-card" onclick="toggleCity('salzburgo')">
+      <div class="city-num">04 · 2 DÍAS</div>
+      <div class="city-name">Salzburgo</div>
+      <div class="city-meta"><span class="city-flag">🇦🇹</span><span>13–15 junio</span></div>
+    </div>
+    <div class="city-detail" id="salzburgo">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Fortaleza de Hohensalzburg <em>(abre 9–19hs en junio)</em></li>
+            <li>Palacio y jardines de Mirabell</li>
+            <li>Catedral de Salzburgo</li>
+            <li>Casa Natal de Mozart — Getreidegasse</li>
+            <li>Kapitelplatz y Alter Markt</li>
+            <li>Iglesia de San Pedro y cementerio</li>
+            <li>Residenzplatz</li>
+            <li>Palacio de Hellbrunn (con jardines de agua)</li>
+            <li>Kapuzinerberg — vistas panorámicas</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Free Tour Mirabell — Guruwalks</span>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">1h 45min · Desde Schloss Mirabell · Horario 14hs<br>
+            Incluye: Mirabell Garden, Marko fine gold bridge, Grain Alley, Casa de Mozart, Old Market, Domplatz</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Excursión al Lago Wolfgangsee</span>
+            <span class="price-badge">~Gratis en auto</span>
+            <div class="tour-meta">A 45min de Salzburgo. Lago alpino de postal. Se puede combinar con St. Wolfgang.</div>
+          </div>
+          <div class="tip-box">💡 Salzburgo es pequeña y caminable. El mejor horario para la fortaleza es temprano a la mañana antes de las multitudes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIUBLIANA -->
+    <div class="city-card" onclick="toggleCity('liubliana')">
+      <div class="city-num">05 · 1 DÍA</div>
+      <div class="city-name">Liubliana</div>
+      <div class="city-meta"><span class="city-flag">🇸🇮</span><span>15–16 junio</span></div>
+    </div>
+    <div class="city-detail" id="liubliana">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Castillo de Liubliana — vistas panorámicas</li>
+            <li>Puente de los Dragones</li>
+            <li>Puente de los Carniceros</li>
+            <li>Plaza Prešeren</li>
+            <li>Puente Triple</li>
+            <li>Metelkova mesto — barrio artístico (ex cuartel yugoslavo)</li>
+            <li>Mercado Central</li>
+            <li>Catedral de San Nicolás</li>
+            <li>Tivoli Park</li>
+            <li>🏰 Bled — a 40 min del camping</li>
+          </ul>
+          <div class="tip-box">💡 <strong>Castillo de Predjama</strong> (a ~1h) es uno de los castillos más espectaculares de Europa, construido dentro de una cueva. Horario junio: 9–18hs. Vale el desvío si tienen tiempo.</div>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.guruwalk.com/es/walks/49974-ljubljana-revelada-un-viaje-a-traves-del-tiempo-y-los-cuentos" target="_blank">Free Tour Liubliana — Guruwalk</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2hs · Salida 17:30 · Plaza de los Congresos<br>
+            Incluye: Plaza Preseren, Tromostovje, Puente de los Dragones, Catedral San Nicolás, Municipio</div>
+          </div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/liubliana/free-tour-liubliana/" target="_blank">Free Tour Liubliana — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2hs · Horarios: 10hs, 12hs, 15hs, 18hs · Más opciones de horario</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Lago Bled (excursión desde el camping)</span>
+            <span class="price-badge">~10–15 € entrada</span>
+            <div class="tour-meta">El lago con la islita y la iglesia. Uno de los paisajes más fotografiados de Europa. A solo 40 minutos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRIESTE -->
+    <div class="city-card" onclick="toggleCity('trieste')">
+      <div class="city-num">06 · 1 DÍA</div>
+      <div class="city-name">Trieste</div>
+      <div class="city-meta"><span class="city-flag">🇮🇹</span><span>16–17 junio</span></div>
+    </div>
+    <div class="city-detail" id="trieste">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Casco histórico de Trieste</li>
+            <li>Risiera di San Sabba — único campo de concentración nazi en Italia</li>
+            <li>Piazza Unità d'Italia — la plaza más grande sobre el mar de Europa</li>
+            <li>Castello di Miramare</li>
+            <li>Canal Grande de Trieste</li>
+            <li>Grotta Gigante — opcional (cueva gigantesca)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Info práctica</div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">No hay free tours gratuitos en Trieste</span>
+            <div class="tour-meta">Es una ciudad para recorrer a pie por el casco histórico. Perfecta para una tarde/mañana de tránsito.</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Grotta Gigante</span>
+            <span class="price-badge">~16 € c/u</span>
+            <div class="tour-meta">Una de las grutas turísticas más grandes del mundo. A 15 min del centro. Visita guiada de 45 min.</div>
+          </div>
+          <div class="tip-box">💡 Trieste es ciudad de paso pero tiene mucha historia y un carácter único: mezcla italiana, austriaca y eslava. El caffè triestino es famoso en toda Italia.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="city-card" onclick="toggleCity('split')">
+      <div class="city-num">07 · 4 DÍAS</div>
+      <div class="city-name">Split</div>
+      <div class="city-meta"><span class="city-flag">🇭🇷</span><span>17–21 junio</span></div>
+    </div>
+    <div class="city-detail" id="split">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Palacio de Diocleciano — ciudad dentro de un palacio romano</li>
+            <li>Peristilo</li>
+            <li>Sótanos del Palacio de Diocleciano</li>
+            <li>Catedral de San Domnius</li>
+            <li>Templo de Júpiter</li>
+            <li>Estatua de Grgur Ninski</li>
+            <li>Puerta Aurea</li>
+            <li>Museo de Game of Thrones 🐉</li>
+            <li>Paseo Marítimo de Split (Riva)</li>
+            <li>Plaza de la República y del Pueblo</li>
+            <li>Galería de Bellas Artes</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours y excursiones</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/split/free-tour-split/" target="_blank">Free Tour Split — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">1h 30min · Horarios: 9hs, 10hs, 11hs, 12hs, 13hs y 18hs<br>
+            Incluye: Palacio de Diocleciano, Catedral de Salona, Plaza de la República, Paseo Marítimo de Riva</div>
+          </div>
+          <div class="tour-card">
+            <a href="https://www.alltrails.com/es/ruta/croatia/split-dalmatia/omis-fortica" target="_blank">Trekking Omiš Fortica</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">Dificultad moderada · Fortaleza pirata con vistas épicas al mar Adriático</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">🌊 Parque Nacional Plitvice</span>
+            <span class="price-badge">~25 € entrada + 18 € estac.</span>
+            <div class="tour-meta">Lagos en cascada de color turquesa. Patrimonio UNESCO. Recomendado entrar después de las 16hs para pagar menos. A ~2hs de Split.</div>
+          </div>
+          <div class="tip-box">💡 Con 4 días en Split tienen tiempo perfecto: un día el casco histórico, un día Plitvice, un día playa/Omiš y un día más tranquilo antes de Dubrovnik.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUBROVNIK -->
+    <div class="city-card" onclick="toggleCity('dubrovnik')">
+      <div class="city-num">08 · 2 DÍAS</div>
+      <div class="city-name">Dubrovnik</div>
+      <div class="city-meta"><span class="city-flag">🇭🇷</span><span>21–23 junio</span></div>
+    </div>
+    <div class="city-detail" id="dubrovnik">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Murallas de Dubrovnik — imperdible caminarlas enteras</li>
+            <li>Stradun — calle principal del casco histórico</li>
+            <li>Fuente de Onofrio</li>
+            <li>Iglesias de San Salvador y San Blas</li>
+            <li>Monasterio franciscano</li>
+            <li>Estatua de Orlando</li>
+            <li>Palacio del Rector</li>
+            <li>Fuente de Amerling</li>
+            <li>Iglesia de San Ignacio</li>
+            <li>Cable car al Monte Srd — vistas 360°</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/dubrovnik/free-tour-dubrovnik/" target="_blank">Free Tour Dubrovnik — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2hs · Salidas: 10hs, 11hs, 12hs y 18hs · Desde Fuente de Onofrio</div>
+          </div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/dubrovnik/free-tour-dubrovnik-juego-tronos/" target="_blank">Free Tour Game of Thrones — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2hs · Salidas: 10:30 y 18:30 · King's Landing en la vida real 🐉</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Murallas de Dubrovnik</span>
+            <span class="price-badge">~35 € c/u</span>
+            <div class="tour-meta">La caminata de las murallas medievales es la experiencia icónica de Dubrovnik. Vistas increíbles al Adriático. ¡No se la pierdan!</div>
+          </div>
+          <div class="tip-box">💡 Dubrovnik es cara. Lleguen temprano a la ciudad vieja antes de los cruceros (antes de las 9hs). Las murallas son el must absoluto aunque tengan precio.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOTOR -->
+    <div class="city-card" onclick="toggleCity('kotor')">
+      <div class="city-num">09 · 3 DÍAS</div>
+      <div class="city-name">Kotor</div>
+      <div class="city-meta"><span class="city-flag">🇲🇪</span><span>23–25 junio</span></div>
+    </div>
+    <div class="city-detail" id="kotor">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Murallas de Kotor — subida a la Fortaleza de San Juan</li>
+            <li>Catedral de San Trifón</li>
+            <li>Plaza de Armas</li>
+            <li>Museo de los Gatos (sí, de gatos 🐱)</li>
+            <li>Puerta del Mar y Puerta del Río</li>
+            <li>Colegiata de Santa María</li>
+            <li>Plaza de San Lucas</li>
+            <li>Iglesia de San Nicolás</li>
+            <li>Museo Marítimo</li>
+            <li>🚢 Paseo en barco por la Bahía de Kotor</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours y excursiones</div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">No hay free tours oficiales en Kotor</span>
+            <div class="tour-meta">Pero el casco histórico es completamente caminable y pequeño. Perfecto para explorar solos.</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">🚢 Paseo en barco Bahía de Kotor</span>
+            <span class="price-badge">~15–20 € c/u</span>
+            <div class="tour-meta">La bahía de Kotor es un fiordo mediterráneo único en Europa. El paseo en barco con parada en Nuestra Señora de las Rocas es espectacular.</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Budva y playas</span>
+            <span class="free-badge">CERCA</span>
+            <div class="tour-meta">A 25 min. Ciudad histórica medieval con playas de arena. Buen plan para uno de los 3 días en Kotor.</div>
+          </div>
+          <div class="tip-box">💡 Con 3 días: día 1 murallas y casco histórico, día 2 barco por la bahía + Nuestra Señora de las Rocas, día 3 Budva o Cetinje (capital histórica de Montenegro).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOSTAR -->
+    <div class="city-card" onclick="toggleCity('mostar')">
+      <div class="city-num">10 · 1 DÍA</div>
+      <div class="city-name">Mostar</div>
+      <div class="city-meta"><span class="city-flag">🇧🇦</span><span>25–26 junio</span></div>
+    </div>
+    <div class="city-detail" id="mostar">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Puente Viejo de Mostar (Stari Most) — el símbolo</li>
+            <li>Puente Torcido (Kriva Cuprija)</li>
+            <li>Calle Kujundziluk — bazar turco</li>
+            <li>Mezquita Koski Mehmed Pasha</li>
+            <li>Mezquita Karadjoz Bey</li>
+            <li>Casa Biscevic</li>
+            <li>Casa Muslibegovic</li>
+            <li>Museo de Víctimas de Guerra 1992–1995</li>
+            <li>Sniper Tower</li>
+            <li>Tekke de Blagaj — monasterio derviche junto a un río</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.guruwalk.com/es/walks/68481-tour-gratuito-por-el-mostar-historico-de-la-posguerra" target="_blank">Free Tour Mostar Posguerra — Guruwalk</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">1h 30min · Salida 17hs · Old Bridge Mostar<br>
+            Incluye: Stari Most, Kujundžiluk, Puente Torcido, Iglesia franciscana</div>
+          </div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/mostar/free-tour-mostar/" target="_blank">Free Tour Mostar — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">1h 30min · Salidas: 12:15 o 20:15 · Desde Plaza de España<br>
+            Incluye: Puente Viejo, Puente Torcido, estatua de Bruce Lee, Calle Fejica</div>
+          </div>
+          <div class="tip-box">💡 Mostar es emocionante y diferente. La mezcla de culturas (turco-otomano, eslavo, cristiano) se siente en cada calle. El Tekke de Blagaj (fuente del río Buna) está a 15min y vale mucho la pena.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SARAJEVO -->
+    <div class="city-card" onclick="toggleCity('sarajevo')">
+      <div class="city-num">11 · 1 DÍA</div>
+      <div class="city-name">Sarajevo</div>
+      <div class="city-meta"><span class="city-flag">🇧🇦</span><span>26–27 junio</span></div>
+    </div>
+    <div class="city-detail" id="sarajevo">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Baščaršija — el gran bazar otomano</li>
+            <li>Fuente Sebilj</li>
+            <li>Ayuntamiento de Sarajevo (Vijećnica)</li>
+            <li>Puente Latino — donde se mató al Archiduque Francisco Fernando</li>
+            <li>Callejón de los Herreros</li>
+            <li>Mezquita Gazi Husrev-beg</li>
+            <li>Catedral del Sagrado Corazón</li>
+            <li>Catedral Ortodoxa de la Natividad</li>
+            <li>Sinagoga de Sarajevo</li>
+            <li>Rosas de Sarajevo — marcas de guerra en el asfalto</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/sarajevo/free-tour-sarajevo/" target="_blank">Free Tour Sarajevo — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2h 15min · Salidas: 10:30, 14:30 y 18:00 · Desde Ayuntamiento<br>
+            Incluye: Sebilj, Baščaršija, mezquita Gazi Husrev-beg, Puente Latino, Catedral, sinagoga</div>
+          </div>
+          <div class="tour-card">
+            <a href="https://www.guruwalk.com/es/walks/42771-sarajevo-a-traves-de-los-siglos-free-tour" target="_blank">Free Tour Sarajevo Siglos — Guruwalk</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2h 15min · Salida 10:30 · Plaza Bašcarsija<br>
+            Incluye: Fuente Sebil, Ayuntamiento, Caravana Saray, Mezquita, Catedral Católica, Rosas de Sarajevo, Puente Latino</div>
+          </div>
+          <div class="tip-box">💡 Sarajevo es una ciudad que te va a sorprender. Es el "cruce de culturas" de Europa — en 500m podés pasar de una mezquita a una sinagoga a una iglesia ortodoxa a una catedral católica.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUDAPEST -->
+    <div class="city-card" onclick="toggleCity('budapest')">
+      <div class="city-num">12 · 2 DÍAS</div>
+      <div class="city-name">Budapest</div>
+      <div class="city-meta"><span class="city-flag">🇭🇺</span><span>27–29 junio</span></div>
+    </div>
+    <div class="city-detail" id="budapest">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Parlamento de Budapest — visita nocturna impresionante</li>
+            <li>Bastión de los Pescadores</li>
+            <li>Iglesia de Matías</li>
+            <li>Castillo de Buda</li>
+            <li>Puente de las Cadenas</li>
+            <li>Avenida Andrássy y la Ópera</li>
+            <li>Mercado Central (Nagy Vásárcsarnok)</li>
+            <li>Baños Széchenyi — baños termales</li>
+            <li>Barrio Judío (Ruin Bars)</li>
+            <li>Gran Sinagoga — la más grande de Europa</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours y excursiones</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/budapest/free-tour-budapest/" target="_blank">Free Tour Budapest — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">3hs · Múltiples horarios · Lado de Pest y lado de Buda disponibles</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">🛁 Baños Széchenyi</span>
+            <span class="price-badge">~25 € c/u</span>
+            <div class="tour-meta">Los baños termales más famosos de Budapest. Construidos en 1913. Neobarroco. Relajación total después de días de viaje.</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">🚢 Crucero nocturno por el Danubio</span>
+            <span class="price-badge">~15–20 € c/u</span>
+            <div class="tour-meta">Budapest iluminada desde el Danubio es una de las vistas más bellas de Europa. Los 6 juntos en un barco — momento épico.</div>
+          </div>
+          <div class="tip-box">💡 Los "ruin bars" del Barrio Judío (Szimpla Kert es el más famoso) son únicos en el mundo y no tienen precio de entrada.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRATISLAVA -->
+    <div class="city-card" onclick="toggleCity('bratislava')">
+      <div class="city-num">13 · 1 DÍA</div>
+      <div class="city-name">Bratislava</div>
+      <div class="city-meta"><span class="city-flag">🇸🇰</span><span>29–30 junio</span></div>
+    </div>
+    <div class="city-detail" id="bratislava">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Castillo de Bratislava — vistas al Danubio</li>
+            <li>Casco histórico medieval</li>
+            <li>Catedral de San Martín</li>
+            <li>Plaza Principal (Hlavné námestie)</li>
+            <li>Palacio del Primate</li>
+            <li>Calle Michalská y Torre de San Miguel</li>
+            <li>Devin Castle — a 12km, ruinas dramáticas sobre el Danubio</li>
+            <li>Estatuas humorísticas en las calles — Man at Work, Napoleonic Soldier</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/bratislava/free-tour-bratislava/" target="_blank">Free Tour Bratislava — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2hs · Múltiples horarios · El centro histórico es pequeño y caminable</div>
+          </div>
+          <div class="tip-box">💡 Bratislava es la ciudad perfecta de "tránsito": pequeña, encantadora, sin aglomeraciones. Un día es suficiente para ver lo mejor.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIENA -->
+    <div class="city-card" onclick="toggleCity('viena')">
+      <div class="city-num">14 · 2 DÍAS</div>
+      <div class="city-name">Viena</div>
+      <div class="city-meta"><span class="city-flag">🇦🇹</span><span>30 jun – 2 jul</span></div>
+    </div>
+    <div class="city-detail" id="viena">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Palacio de Schönbrunn y jardines</li>
+            <li>Museo de Historia del Arte (KHM)</li>
+            <li>Catedral de San Esteban (Stephansdom)</li>
+            <li>Ringstrasse — boulevard imperial</li>
+            <li>Hofburg — palacio imperial</li>
+            <li>Ópera de Viena</li>
+            <li>Prater y la Noria histórica</li>
+            <li>Naschmarkt — mercado callejero</li>
+            <li>Belvedere Palace</li>
+            <li>Café Central — cafetería histórica</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/viena/free-tour-viena/" target="_blank">Free Tour Viena — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">2h 30min · Múltiples horarios desde Stephansplatz</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Palacio Schönbrunn</span>
+            <span class="price-badge">~20 € c/u</span>
+            <div class="tour-meta">La residencia veraniega de los Habsburgo. Los jardines son gratis y épicos.</div>
+          </div>
+          <div class="tip-box">💡 Vienna Card conviene si van a usar el transporte público varios días. Los museos son caros, pero los jardines del Schönbrunn y del Belvedere son gratis.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRAGA -->
+    <div class="city-card" onclick="toggleCity('praga')">
+      <div class="city-num">15 · 2 DÍAS</div>
+      <div class="city-name">Praga</div>
+      <div class="city-meta"><span class="city-flag">🇨🇿</span><span>2–5 julio</span></div>
+    </div>
+    <div class="city-detail" id="praga">
+      <div class="city-detail-inner">
+        <div>
+          <div class="detail-section-title">Imperdibles</div>
+          <ul class="must-see-list">
+            <li>Puente de Carlos a las 6am (sin turistas)</li>
+            <li>Plaza de la Ciudad Vieja y Reloj Astronómico</li>
+            <li>Castillo de Praga — panorama de la ciudad</li>
+            <li>Barrio Judío (Josefov)</li>
+            <li>Catedral de San Vito</li>
+            <li>Barrio de Malá Strana</li>
+            <li>Plaza de Wenceslao</li>
+            <li>Lennon Wall</li>
+            <li>Vinohrady — barrio art nouveau para comer bien y barato</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-section-title">Tours recomendados</div>
+          <div class="tour-card">
+            <a href="https://www.civitatis.com/ar/praga/free-tour-praga/" target="_blank">Free Tour Praga — Civitatis</a>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">3hs · Múltiples horarios · Ciudad Vieja y Malá Strana</div>
+          </div>
+          <div class="tour-card">
+            <span style="color:rgba(245,240,232,0.8); font-size:14px; font-weight:500">Free Tour nocturno</span>
+            <span class="free-badge">GRATIS</span>
+            <div class="tour-meta">Praga de noche es absolutamente mágica. Vale la pena un tour nocturno por el puente de Carlos y la ciudad vieja iluminada.</div>
+          </div>
+          <div class="tip-box">💡 Praga es la ciudad más barata de las últimas semanas del viaje. Aprovechen para comer bien (svíčková, trdelník) y tomar cervezas cheas que son las mejores del mundo. Ideal fin de viaje.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /city grid -->
+</section>
+
+<hr class="divider">
+
+<!-- CAMPINGS -->
+<section class="section" id="campings">
+  <div class="section-label">Dónde dormir</div>
+  <h2 class="section-title">Campings &amp;<br>motorhome</h2>
+  <p style="color:var(--slate); margin-bottom:32px; font-size:14px;">Todos los campings están en Park4Night. Los precios son aproximados por noche.</p>
+
+  <div class="camping-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th>Ciudad</th>
+          <th>Camping / Link</th>
+          <th>Precio/noche</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇩🇪 Alemania</td>
+          <td><strong>Berlín</strong></td>
+          <td><a href="https://www.airbnb.mx/rooms/14956202" target="_blank">Airbnb Berlín</a></td>
+          <td class="camp-price">—</td>
+          <td>Airbnb para los días en Berlín</td>
+        </tr>
+        <tr>
+          <td>🇩🇪 Alemania</td>
+          <td><strong>Nuremberg</strong></td>
+          <td><a href="https://park4night.com/es/place/85118" target="_blank">Park4Night #85118</a></td>
+          <td class="camp-price">45 €</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>🇩🇪 Alemania</td>
+          <td><strong>Munich</strong></td>
+          <td><a href="https://park4night.com/es/place/18346" target="_blank">Park4Night #18346</a></td>
+          <td class="camp-price">20 €</td>
+          <td>Comentarios dicen que es algo ruidosa</td>
+        </tr>
+        <tr>
+          <td>🇦🇹 Austria</td>
+          <td><strong>Salzburgo</strong></td>
+          <td><a href="https://park4night.com/es/place/69353" target="_blank">Park4Night #69353</a></td>
+          <td class="camp-price">30 €</td>
+          <td>El mismo de Fran, Eugenio y Cami</td>
+        </tr>
+        <tr>
+          <td>🇸🇮 Eslovenia</td>
+          <td><strong>Liubliana</strong></td>
+          <td><a href="https://park4night.com/es/place/9326" target="_blank">Park4Night #9326</a></td>
+          <td class="camp-price">85 €</td>
+          <td>El mismo de Fran, Eugenio y Cami — hay opción B si está completo</td>
+        </tr>
+        <tr>
+          <td>🇮🇹 Italia</td>
+          <td><strong>Trieste</strong></td>
+          <td><a href="https://park4night.com/es/place/75062" target="_blank">Park4Night #75062</a></td>
+          <td class="camp-price">—</td>
+          <td>Poca variedad en Trieste, opciones algo limitadas</td>
+        </tr>
+        <tr>
+          <td>🇭🇷 Croacia</td>
+          <td><strong>Split</strong> (Lokva Rogoznika)</td>
+          <td><a href="https://park4night.com/es/place/22347" target="_blank">Park4Night #22347</a></td>
+          <td class="camp-price">65 €</td>
+          <td>El mismo del año pasado ✓</td>
+        </tr>
+        <tr>
+          <td>🇭🇷 Croacia</td>
+          <td><strong>Dubrovnik</strong></td>
+          <td><a href="https://park4night.com/es/place/2217" target="_blank">Park4Night #2217</a></td>
+          <td class="camp-price">—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>🇲🇪 Montenegro</td>
+          <td><strong>Kotor</strong></td>
+          <td><a href="https://park4night.com/es/place/35317" target="_blank">Park4Night #35317</a> · <a href="https://park4night.com/es/place/39610" target="_blank">#39610</a></td>
+          <td class="camp-price">50 €</td>
+          <td>Buenas opciones cruzando el agua</td>
+        </tr>
+        <tr>
+          <td>🇧🇦 Bosnia</td>
+          <td><strong>Mostar</strong></td>
+          <td><a href="https://park4night.com/es/place/546348" target="_blank">Park4Night #546348</a> · <a href="https://park4night.com/es/place/124588" target="_blank">#124588</a></td>
+          <td class="camp-price">40 €</td>
+          <td>Buenas opciones — elegir según puntos de interés</td>
+        </tr>
+        <tr>
+          <td>🇧🇦 Bosnia</td>
+          <td><strong>Sarajevo</strong></td>
+          <td><a href="https://park4night.com/es/place/79442" target="_blank">Park4Night #79442</a></td>
+          <td class="camp-price">35 €</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>🇭🇺 Hungría</td>
+          <td><strong>Budapest</strong></td>
+          <td><a href="https://park4night.com/es/place/419097" target="_blank">Park4Night #419097</a></td>
+          <td class="camp-price">60 €</td>
+          <td>El mismo del año pasado ✓</td>
+        </tr>
+        <tr>
+          <td>🇸🇰 Eslovaquia</td>
+          <td><strong>Bratislava</strong></td>
+          <td><a href="https://park4night.com/es/place/27690" target="_blank">Park4Night #27690</a></td>
+          <td class="camp-price">120 €</td>
+          <td>El más caro del viaje</td>
+        </tr>
+        <tr>
+          <td>🇦🇹 Austria</td>
+          <td><strong>Viena</strong></td>
+          <td><a href="https://www.reisemobilstellplatz-wien.at/" target="_blank">reisemobilstellplatz-wien.at</a></td>
+          <td class="camp-price">80 €</td>
+          <td>El mismo del año pasado ✓</td>
+        </tr>
+        <tr>
+          <td>🇨🇿 Rep. Checa</td>
+          <td><strong>Praga</strong></td>
+          <td><a href="https://park4night.com/es/place/292624" target="_blank">Park4Night #292624</a></td>
+          <td class="camp-price">50 €</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- APPS -->
+<section class="section" id="apps">
+  <div class="section-label">Herramientas</div>
+  <h2 class="section-title">Apps &amp; links<br>útiles</h2>
+
+  <div class="apps-grid">
+    <div class="app-card">
+      <div class="app-name">Park4Night</div>
+      <div class="app-desc">Todos los campings y estacionamientos para motorhome de Europa. La biblia del viaje en van.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-name">Civitatis</div>
+      <div class="app-desc">Free tours y excursiones en español. Reservar con anticipación los tours gratuitos, son muy populares.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-name">Guruwalk</div>
+      <div class="app-desc">Alternativa a Civitatis para free tours. Buena cobertura en ciudades como Liubliana y Mostar.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-name">Freetour.com</div>
+      <div class="app-desc">Otra plataforma de free walking tours. Conviene comparar opciones en cada ciudad.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-name">Google MyMaps</div>
+      <div class="app-desc"><a href="https://www.google.com/maps/d/edit?mid=1Q_8NUCkbUIRISkcXTvrwtYx_6ayShgs" target="_blank" style="color:var(--rust)">Mapa personalizado del viaje →</a><br>Todos los puntos de interés mapeados.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-name">AllTrails</div>
+      <div class="app-desc">Para el trekking de Omiš Fortica y cualquier senderismo en la zona de Split o Eslovenia.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Europa 2026</strong> · La Gran Aventura Familiar</p>
+  <p style="margin-top:8px">6 personas · 1 motorhome · 30 días · incontables recuerdos</p>
+  <p style="margin-top:16px; font-size:11px; opacity:0.5">Guía de viaje generada con cariño ♥</p>
+</footer>
+
+<script>
+  function toggleCity(id) {
+    const detail = document.getElementById(id);
+    const card = detail.previousElementSibling;
+    const allDetails = document.querySelectorAll('.city-detail');
+    const allCards = document.querySelectorAll('.city-card');
+
+    const isOpen = detail.classList.contains('open');
+
+    // close all
+    allDetails.forEach(d => d.classList.remove('open'));
+    allCards.forEach(c => c.classList.remove('active'));
+
+    if (!isOpen) {
+      detail.classList.add('open');
+      card.classList.add('active');
+
+      // scroll to card
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }
+</script>
+</body>
+</html>
